@@ -1,0 +1,66 @@
+repositories:
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
+  - name: jenkins
+    url: https://charts.jenkins.io
+  - name: gitea-charts
+    url: https://dl.gitea.com/charts/
+  - name: harbor
+    url: https://helm.goharbor.io
+  - name: sonarqube
+    url: https://SonarSource.github.io/helm-chart-sonarqube
+  - name: argo
+    url: https://argoproj.github.io/argo-helm
+  - name: empathyco
+    url: https://empathyco.github.io/helm-charts/
+
+releases:
+  - name: my-ingress-nginx
+    namespace: ingress-nginx
+    createNamespace: true
+    chart: ingress-nginx/ingress-nginx
+    version: 4.15.1
+    values:
+      - values/ingress-nginx/values.yaml
+  - name: my-jenkins
+    namespace: jenkins
+    createNamespace: true
+    chart: jenkins/jenkins
+    version: 5.9.68
+    values:
+      - values/jenkins/values.yaml
+  - name: my-gitea
+    namespace: gitea
+    createNamespace: true
+    chart: gitea-charts/gitea
+    version: 12.7.0
+    values:
+      - values/gitea/values.yaml
+  - name: my-harbor
+    namespace: harbor
+    createNamespace: true
+    chart: harbor/harbor
+    version: 1.19.2
+    values:
+      - values/harbor/values.yaml
+  - name: my-sonarqube
+    namespace: sonarqube
+    createNamespace: true
+    chart: sonarqube/sonarqube
+    version: 2026.5.1002
+    values:
+      - values/sonarqube/values.yaml
+  - name: my-argocd
+    namespace: argocd
+    createNamespace: true
+    chart: argo/argo-cd
+    version: 10.10.3
+    values:
+      - values/argocd/values.yaml
+  - name: my-imagepullsecret
+    namespace: imagepullsecret
+    createNamespace: true
+    chart: empathyco/imagepullsecret-patcher
+    version: 1.0.0
+    values:
+      - values/imagepullsecret/values.yaml
